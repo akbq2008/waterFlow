@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			.water_wrap {
+				height: 128px;
+				width: 128px;
+				border: 1px solid black;
+				position: absolute;
+				transform: rotate(45deg);
+				left: 50%;
+				top: 50%;
+				margin-top: -143px;
+				margin-left: -70px;
+				overflow: hidden;
+				/**/
+			}
+			
+			.water_shadow {
+				height: 93px;
+				width: 187px;
+				left: 50%;
+				top: 50%;
+				background: white;
+				position: absolute;
+				margin-top: -172px;
+				margin-left: -99px;
+				border-bottom: 1px solid black;
+				z-index: 2;
+			}
+			
+			.water {
+				position: absolute;
+				height: 50px;
+				width: 50px;
+				top: 104px;
+				left: 120%;
+				transform: ratate(45deg);
+				margin-left: -50px;
+				animation: water 3s linear infinite;
+				background: rgb(9, 174, 227);
+				border-radius: 34%;
+			}
+			
+			@keyframes water {
+				from {
+					transform: rotate(0);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 水球容器 -->
+		<div class="water_shadow"></div>
+		<div class="water_wrap">
+			<div class="water"></div>
+		</div>
+		<script type="text/javascript">
+			var water = document.querySelector(".water");
+			var flag = 0;
+			var arr = ["left:116%;top:95px;border-radius:34%;width:0;height:0;", "left:116%;top:95px;border-radius:34%;width:60%;height:60%;", "left:101%;top:77px;border-radius:33%;width:100%;height:100%;", "left:85%;top:65px;border-radius:32%;width:150%;height:150%;", "left:64%;top:36px;border-radius:36%;width:250%;height:250%;", "left:44%;top:6px;border-radius:45%;width:340%;height:340%;", "position: absolute;height: 220px;width: 220px;top:0;left: 38%;margin-left: -50px;background: rgb(9, 174, 227);border-radius: 34%;"];
+
+			setInterval(function() {
+				if(flag >= 0 && flag < 7) {
+					console.log(flag)
+					water.style.cssText = arr[flag];
+					flag++;
+				} else {
+					flag = 0;
+				}
+			}, 1000);
+		</script>
+	</body>
+
+</html>
